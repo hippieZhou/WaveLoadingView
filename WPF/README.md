@@ -4,7 +4,7 @@
 ## Images
 | Circle | column |
 |--------|--------|
-|<img src="http://7xikfc.com1.z0.glb.clouddn.com/waveloadingview.png" alt="sample" title="sample" width="631" height="419"/> | <img src="http://7xikfc.com1.z0.glb.clouddn.com/waveloadingview.png" alt="sample" title="sample" width="631" height="419"/> |
+|<img src="https://github.com/hippieZhou/ZQ.WaveLoadingView/blob/master/WPF/Screenshots/Cirlce.gif" alt="sample" title="sample" width="631" height="419"/> | <img src="https://github.com/hippieZhou/ZQ.WaveLoadingView/blob/master/WPF/Screenshots/Square.gif" alt="sample" title="sample" width="631" height="419"/> |
 
 
 
