@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WaveLoadingView.Properties
+namespace WaveLoadingViewDemo.Properties
 {
 
 
