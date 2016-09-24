@@ -1,6 +1,6 @@
 ## WaveLoadingView
 
-**หตร๗**
+**Description for this project**
 
 ### 1. Android
 
