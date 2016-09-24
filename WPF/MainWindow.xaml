@@ -5,24 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaveLoadingViewDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
+        Title="MainWindow" Height="400" Width="400">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <local:WaveLoadingView Title="Hello World"
-                               TitleAlignment="Center"
-                               BorderBrush="Green"
+        <local:WaveLoadingView ShapeType="Cirlce"
+                               
+                               BorderBrush="#0FBD09"
                                BorderThickness="2"
-                               ShapeType="Cirlce"/>
-        <StackPanel Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Title"/>
-                <RadioButton Content="Top"/>
-                <RadioButton Content="Center"/>
-                <RadioButton Content="Buttom"/>
-            </StackPanel>
-        </StackPanel>
+                               
+                               Title="Hello World" 
+                               TitleColor="#0FBD09"
+                               TitleAlignment="Center"
+                               TitleVisibility="Visible"
+
+                               Progress="50"
+                               WaveColor="#00E4C5"/>
     </Grid>
 </Window>

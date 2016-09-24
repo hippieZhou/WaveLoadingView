@@ -11,23 +11,62 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:WaveLoadingView}">
-                    <Viewbox>
-                        <Grid x:Name="rootGrid" Background="Red" Width="100" Height="100" Tag="{TemplateBinding ShapeType}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="sb">
+                            <PointAnimation Storyboard.TargetName="bs_water" Storyboard.TargetProperty="Point1" From="25,-8"
+                            To="20,8" Duration="00:00:2" AutoReverse="True" RepeatBehavior="Forever"/>
+                            <PointAnimation Storyboard.TargetName="bs_water" Storyboard.TargetProperty="Point2" From="75,5"
+                            To="70,-5" Duration="00:00:1.8" AutoReverse="True" RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    
+                    <Viewbox Margin="12">
+                        <Grid x:Name="rootGrid" Width="100" Height="100" Tag="{TemplateBinding ShapeType}">
                             <Grid.Clip>
                                 <EllipseGeometry Center="50,50" 
                                                  RadiusX="{Binding ElementName=rootGrid, Path=Tag, Converter={StaticResource ShapeConverter}, TargetNullValue=90, FallbackValue=90}" 
                                                  RadiusY="{Binding ElementName=rootGrid, Path=Tag, Converter={StaticResource ShapeConverter}, TargetNullValue=90, FallbackValue=90}"/>
                             </Grid.Clip>
+
+                            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+                                <Path Fill="{TemplateBinding WaveColor}" Margin="0,0,0,-1">
+                                    <Path.Data>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="0,0">
+                                                <BezierSegment x:Name="bs_water" Point1="25,-10" Point2="75,5" Point3="100,0"/>
+                                                <PolyLineSegment Points="100,5 0,5"/>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Path.Data>
+                                </Path>
+                                <Rectangle Fill="{TemplateBinding WaveColor}" Height="{TemplateBinding Progress}"/>
+                            </StackPanel>
+
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="{TemplateBinding Title}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontStretch="{TemplateBinding FontStretch}"
+                                       FontStyle="{TemplateBinding FontStyle}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       VerticalAlignment="{TemplateBinding TitleAlignment}" 
+                                       Foreground="{TemplateBinding TitleColor}"
+                                       Visibility="{TemplateBinding TitleVisibility}"/>
+
                             <Border Width="{Binding ElementName=rootGrid,Path=Width}" Height="{Binding ElementName=rootGrid,Path=Height}" 
                                     BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="{Binding ElementName=rootGrid, Path=Tag, Converter={StaticResource BorderConverter}, TargetNullValue=50, FallbackValue=50}"/>
-                            <TextBlock Text="{TemplateBinding Title}" 
-                                       VerticalAlignment="{TemplateBinding TitleAlignment}" 
-                                       Foreground="{TemplateBinding TitleForeground}"
-                                       HorizontalAlignment="Center"/>
                         </Grid>
                     </Viewbox>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource sb}"/>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                    
                 </ControlTemplate>
+                
             </Setter.Value>
         </Setter>
     </Style>

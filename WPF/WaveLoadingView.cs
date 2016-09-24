@@ -7,6 +7,11 @@ using System.Windows.Media;
 
 namespace WaveLoadingViewDemo
 {
+    /*
+     * http://www.cnblogs.com/tsliwei/p/5770546.html
+     */
+
+
     [Flags]
     public enum Shape
     {
@@ -133,18 +138,70 @@ namespace WaveLoadingViewDemo
             }));
 
 
-        public Brush TitleForeground
+        public Brush TitleColor
         {
-            get { return (Brush)GetValue(TitleForegroundProperty); }
-            set { SetValue(TitleForegroundProperty, value); }
+            get { return (Brush)GetValue(TitleColorProperty); }
+            set { SetValue(TitleColorProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for TitleForeground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TitleForegroundProperty =
-            DependencyProperty.Register("TitleForeground", typeof(Brush), typeof(WaveLoadingView), new PropertyMetadata(new SolidColorBrush(Colors.White), (d, e) =>
+        public static readonly DependencyProperty TitleColorProperty =
+            DependencyProperty.Register("TitleColor", typeof(Brush), typeof(WaveLoadingView), new PropertyMetadata(new SolidColorBrush(Colors.Black), (d, e) =>
              {
                  var handler = d as WaveLoadingView;
-                 handler?.SetValue(TitleForegroundProperty, (Brush)e.NewValue);
+                 handler?.SetValue(TitleColorProperty, (Brush)e.NewValue);
              }));
+
+
+        public Visibility TitleVisibility
+        {
+            get { return (Visibility)GetValue(TitleVisibilityProperty); }
+            set { SetValue(TitleVisibilityProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TitleVisibility.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleVisibilityProperty =
+            DependencyProperty.Register("TitleVisibility", typeof(Visibility), typeof(WaveLoadingView), new PropertyMetadata(Visibility.Visible,(d,e)=> 
+            {
+                var handler = d as WaveLoadingView;
+                handler?.SetValue(TitleVisibilityProperty, (Visibility)e.NewValue);
+            }));
+
+
+        public Brush WaveColor
+        {
+            get { return (Brush)GetValue(WaveColorProperty); }
+            set { SetValue(WaveColorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for WaveBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty WaveColorProperty =
+            DependencyProperty.Register("WaveColor", typeof(Brush), typeof(WaveLoadingView), new PropertyMetadata(new SolidColorBrush(Colors.Orange), (d, e) =>
+             {
+                 var handler = d as WaveLoadingView;
+                 handler?.SetValue(WaveColorProperty, (Brush)e.NewValue);
+             }));
+
+
+        public double Progress
+        {
+            get { return (double)GetValue(ProgressProperty); }
+            set { SetValue(ProgressProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Progress.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ProgressProperty =
+            DependencyProperty.Register("Progress", typeof(double), typeof(WaveLoadingView), new PropertyMetadata(0.0, (d, e) => 
+            {
+                var handler = d as WaveLoadingView;
+                if ((double)e.NewValue > -1 && (double)e.NewValue < 100)
+                {
+                    handler?.SetValue(ProgressProperty, (double)e.NewValue);
+                }
+                else
+                {
+                    handler?.SetValue(ProgressProperty, (double)e.OldValue);
+                }
+            }));
     }
 }
