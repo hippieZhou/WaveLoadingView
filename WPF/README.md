@@ -2,7 +2,7 @@
 
 
 ## Images
-| Circle | column |
+| Circle | Square |
 |--------|--------|
 |<img src="https://github.com/hippieZhou/ZQ.WaveLoadingView/blob/master/WPF/Screenshots/Cirlce.gif" alt="sample" title="sample" width="631" height="419"/> | <img src="https://github.com/hippieZhou/ZQ.WaveLoadingView/blob/master/WPF/Screenshots/Square.gif" alt="sample" title="sample" width="631" height="419"/> |
 
